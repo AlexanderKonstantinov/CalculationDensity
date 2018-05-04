@@ -1,0 +1,68 @@
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\bin\Release\CalcEventDensity.exe.config
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\bin\Release\CalcEventDensity.exe
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\bin\Release\CalcEventDensity.pdb
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.csprojResolveAssemblyReference.cache
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\MainWindow.g.cs
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\App.g.cs
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.cache
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.lref
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\App.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\MainWindow.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.g.resources
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.Properties.Resources.resources
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.csproj.GenerateResource.Cache
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.csproj.CoreCompileInputs.cache
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.exe
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.pdb
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Theme.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Buttons.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Colors.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\ContentControls.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Defaults.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Fonts.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Icons.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Texts.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\UserControl.baml
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\SplashScreen.g.cs
+D:\YandexDisk\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\SplashScreen.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.csprojResolveAssemblyReference.cache
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\SplashScreen.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\ContentControls.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Texts.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\Styles\Theme.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\MainWindow.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\SplashScreen.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\App.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.cache
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.lref
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.exe
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2\CalcEventDensity\obj\Release\CalcEventDensity.pdb
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\bin\Release\CalcEventDensity.exe.config
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\bin\Release\CalcEventDensity.exe
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\bin\Release\CalcEventDensity.pdb
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.csprojResolveAssemblyReference.cache
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\SplashScreen.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\ContentControls.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Texts.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Theme.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\MainWindow.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\SplashScreen.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\App.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.cache
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.lref
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\App.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\MainWindow.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Buttons.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Colors.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Defaults.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Fonts.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\Icons.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\Styles\UserControl.baml
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.g.resources
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.Properties.Resources.resources
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.csproj.GenerateResource.Cache
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.csproj.CoreCompileInputs.cache
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.exe
+D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.pdb

@@ -1,0 +1,49 @@
+﻿<Window x:Class="CalcEventDensity.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:helper="clr-namespace:CalcEventDensity.Helpers"
+        mc:Ignorable="d"
+        Title="Плотность событий" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <helper:DoubleConverter x:Key="DoubleConverter"/>
+    </Window.Resources>
+    <Grid x:Name="MainGrid" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+            <Button  Margin="0, 20, 0, 5" Width="150" Height="30" 
+                     Content="ВЫБРАТЬ ФАЙЛ" 
+                     Style="{StaticResource BaseButton}"
+                     Click="btnChooseFile_Click"/>
+            <TextBlock x:Name="tbChoosedFile" TextWrapping="NoWrap" Margin="10 5"
+                       Text="{Binding Filename}" Style="{StaticResource BaseText}"
+                       TextAlignment="Center"/>
+        </StackPanel>
+        
+        <GroupBox Grid.Row="1" Header="Параметры расчета"
+                  Margin="5" Padding="10" VerticalAlignment="Top"
+                  FontSize="{StaticResource Smal}">
+            <ItemsControl BorderThickness="0" HorizontalContentAlignment="Stretch" >
+                <RadioButton x:Name="rb2D" GroupName="Dimensions" Content="2D" Margin="5"/>
+                <RadioButton GroupName="Dimensions" Content="3D" IsChecked="True" Margin="5"/>
+                <CheckBox x:Name="cbGridPoints" Content="Добавить точки сетки" IsChecked="True" Margin="5"/>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Slider x:Name="slGridStep" Delay="0"  HorizontalAlignment="Stretch" Width="130"
+                            Minimum="1" Maximum="50" Value="5" 
+                            IsSelectionRangeEnabled="True" ToolTip="Задать шаг точек"/>
+                    <TextBox x:Name="tbGridStep" Width="30" Margin="5 0"
+                             Text="{Binding ElementName=slGridStep, Path=Value, Mode=TwoWay,
+                                Converter={StaticResource DoubleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </ItemsControl>
+        </GroupBox>
+        <Button Grid.Row="2" Style="{StaticResource BaseButton}" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                Content="РАСЧЕТ" Width="120" Height="50" FontSize="{StaticResource Big}"
+                Command="{Binding CalculateCommand}"/>
+    </Grid>
+</Window>
