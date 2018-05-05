@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using CalcEventDensity.Services.Base;
 using static CalcEventDensity.PointContainer<CalcEventDensity.Models.Point2D>;
 
 namespace CalcEventDensity.Services

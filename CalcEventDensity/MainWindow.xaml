@@ -40,12 +40,12 @@
                 <RadioButton GroupName="Dimensions" Margin="5" Content="3D" 
                              IsChecked="{Binding IsSelected3D}" />
                 <CheckBox Content="Добавить точки сетки" Margin="5"
-                          IsChecked="{Binding DoItGridPoints}"/>
+                          IsChecked="{Binding DoItAddGridPoints}"/>
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Slider x:Name="slGridStep" Delay="0"  HorizontalAlignment="Stretch" Width="130"
                             Minimum="1" Maximum="50" Value="{Binding GridStep}" 
                             IsSelectionRangeEnabled="True" ToolTip="Задать шаг точек"/>
-                    <TextBox x:Name="tbGridStep" Width="30" Margin="5 0"
+                    <TextBox  Width="30" Margin="5 0"
                              Text="{Binding ElementName=slGridStep, Path=Value, Mode=TwoWay,
                                 Converter={StaticResource DoubleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>

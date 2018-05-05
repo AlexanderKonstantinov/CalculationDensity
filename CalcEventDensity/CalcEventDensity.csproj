@@ -78,6 +78,7 @@
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Services\Base\ICalculationService.cs" />
     <Compile Include="Services\CalculationService2D.cs" />
     <Compile Include="Services\CalculationService3D.cs" />
     <Compile Include="Services\ReadDataService.cs" />

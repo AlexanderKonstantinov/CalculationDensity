@@ -9,21 +9,25 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using CalcEventDensity.Infrastructure;
 using CalcEventDensity.Models;
 using CalcEventDensity.Services;
+using CalcEventDensity.Services.Base;
 using DevExpress.Mvvm;
 
 namespace CalcEventDensity
 {
     public class MainViewModel : ViewModelBase
     {
+        private ICalculationService calculationService;
+
         #region Binding fields
         public bool IsSelected3D { get; set; }
         public int GridStep { get; set; }
         public string ChoosedFile { get; set; } 
         #endregion
-        public bool DoItGridPoints { get; set; }
+        public bool DoItAddGridPoints { get; set; }
 
 
         private readonly MainWindow mainWindow;
@@ -39,8 +43,9 @@ namespace CalcEventDensity
         #region Constructors
         public MainViewModel()
         {
+            splashScreen = new SplashScreen();
             IsSelected3D = true;
-            DoItGridPoints = true;
+            DoItAddGridPoints = true;
             GridStep = 5;
         }
         #endregion
@@ -56,45 +61,67 @@ namespace CalcEventDensity
         private RelayCommand calculateCommand;
 
         public ICommand CalculateCommand => calculateCommand
-                                           ?? (calculateCommand = new RelayCommand(ExecuteCalculateCommandCommand, CanExecuteCalculateCommandCommand));
+            ?? (calculateCommand = new RelayCommand(ExecuteCalculateCommand, CanExecuteCalculateCommand));
 
-        private bool CanExecuteCalculateCommandCommand(object o) => true;
-        //private bool CanExecuteCalculateCommandCommand(object o)
+        private bool CanExecuteCalculateCommand(object o)
+        {
+            
+            return true;
+        }
+        //private bool CanExecuteCalculateCommand(object o)
         //    => File.Exists(ReadDataService.PathToInitialFile?.FullName) &&
         //       int.TryParse(mainWindow.tbGridStep.Text, out int n);
-        
+
         private SplashScreen splashScreen;
-        private void ExecuteCalculateCommandCommand(object mainWindow)
+        private void BeginCalculate()
         {
+            
+            splashScreen.Show();
+        }
+
+        private void ExecuteCalculateCommand(object mainWindow)
+        {
+            BeginCalculate();
             var window = mainWindow as Window;
             if (window != null)
             {
+                //SplashScreen splashScreen = new SplashScreen();
+                //splashScreen.Show();
+                //BeginCalculate();
                 window.Hide();
 
-                splashScreen = new SplashScreen();
-                splashScreen.Show();
+                
 
+                
                 if (Dimension == Dimension.D3)
-                    Calculation3D(ref pathToNewFile);
-                else
-                    Calculation2D(ref pathToNewFile);
+                {
+                    if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
+                    {
+                        calculationService = new CalculationService3D(GridStep, DoItAddGridPoints, container);
 
-                splashScreen.Hide();
-                window.Show();
+                        //calculationService.OnCalculationEnd += () =>
+                        //{
+                        //    //splashScreen.Hide();
+                        //    window.Show();
+                        //};
+
+                        calculationService.Calculate(ref pathToNewFile);
+
+                        //pathToNewFile = WriteDataService<Point3D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);
+                    }
+                    else
+                        Calculation2D(ref pathToNewFile);
+                    
+                }
+
+                //MessageBox.Show($"{nameof(Dimension)}\t{Dimension.ToString()}\n" +
+                //                $"{nameof(IsSelected3D)}\t{IsSelected3D}\n" +
+                //                $"{nameof(GridStep)}\t{GridStep}");
+                //mainWindow.Calculate();
             }
-            
-
-            
-
-            //this.Show();
-
-            //MessageBox.Show($"{nameof(Dimension)}\t{Dimension.ToString()}\n" +
-            //                $"{nameof(IsSelected3D)}\t{IsSelected3D}\n" +
-            //                $"{nameof(GridStep)}\t{GridStep}");
-            //mainWindow.Calculate();
         }
 
-        private void Calculation2D(ref string pathToNewFile)
+        void Calculation2D(ref string pathToNewFile)
         {
             //List<IPoint> events = new List<IPoint>();
             //List<IPoint> gridPoints = new List<IPoint>();
@@ -112,22 +139,5 @@ namespace CalcEventDensity
             //}
         }
 
-        private void Calculation3D(ref string pathToNewFile)
-        {
-            List<IPoint> events = new List<IPoint>();
-            List<IPoint> gridPoints = new List<IPoint>();
-
-            if (ReadDataService.ReadData(events, gridPoints, Dimension))
-            {
-                var pointContainer = new PointContainer<Point3D>(
-                    events.Cast<Point3D>().ToList(),
-                    gridPoints.Cast<Point3D>().ToList());
-
-                var calculationService3D = new CalculationService3D(pointContainer, GridStep, DoItGridPoints);
-                calculationService3D.Calculate();
-
-                pathToNewFile = WriteDataService<Point3D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);
-            }
-        }
     }
 }

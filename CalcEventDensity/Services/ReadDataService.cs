@@ -11,7 +11,7 @@ namespace CalcEventDensity.Services
     public static class ReadDataService
     {
         private static bool isCoordinateZ;
-        public static FileInfo PathToInitialFile;
+        public static FileInfo PathToInitialFile = new FileInfo(@"D:\Git\Work Projects\CalculationDensity\Пример\Example.csv");
 
         /// <summary>
         /// 
@@ -57,8 +57,14 @@ namespace CalcEventDensity.Services
             return false;
         }
 
-        public static bool ReadData(List<IPoint> events, List<IPoint> gridPoints, Dimension dimension)
+        public static bool ReadData(Dimension dimension, out PointContainer<IPoint> container)
         {
+            container = new PointContainer<IPoint>
+            {
+                Events = new List<IPoint>(),
+                GridPoints = new List<IPoint>()
+            };
+            
             try
             {
                 using (var sr = new StreamReader(PathToInitialFile.FullName))
@@ -85,7 +91,7 @@ namespace CalcEventDensity.Services
                         }
 
                         if (point.Energy != 0)
-                            events.Add(point);
+                            container.Events.Add(point);
                     }
                 }
                 return true;

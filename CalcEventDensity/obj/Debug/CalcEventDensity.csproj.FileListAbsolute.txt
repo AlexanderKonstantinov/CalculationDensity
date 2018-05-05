@@ -33,7 +33,6 @@ D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\DevExpress.Mv
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\DevExpress.Mvvm.UI.dll
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\PropertyChanged.dll
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\PropertyChanged.xml
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\CalcEventDensity.csprojResolveAssemblyReference.cache
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\SplashScreen.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\ContentControls.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\Texts.baml
@@ -62,3 +61,4 @@ D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\Microsoft.Exp
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\System.Windows.Interactivity.dll
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\Microsoft.Expression.Interactions.xml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\System.Windows.Interactivity.xml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\CalcEventDensity.csprojResolveAssemblyReference.cache

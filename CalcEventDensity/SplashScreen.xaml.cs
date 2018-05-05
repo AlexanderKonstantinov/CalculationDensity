@@ -19,9 +19,6 @@ namespace CalcEventDensity
     /// </summary>
     public partial class SplashScreen : Window
     {
-        public SplashScreen()
-        {
-            InitializeComponent();
-        }
+        public SplashScreen() => InitializeComponent();
     }
 }

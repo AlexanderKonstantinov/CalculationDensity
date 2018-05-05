@@ -5,6 +5,7 @@ namespace CalcEventDensity.Models
     {
         public double X { get; }
         public double Y { get; }
+        public double Z => 0;
 
         public double Energy { get; }
 

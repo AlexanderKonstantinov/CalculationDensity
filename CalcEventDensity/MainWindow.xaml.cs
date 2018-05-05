@@ -101,27 +101,27 @@ namespace CalcEventDensity
             //}
         }
 
-        private SplashScreen splashScreen;
+        //private SplashScreen splashScreen;
 
         private void ShowScreen()
         {
-            splashScreen = new SplashScreen();
+            //splashScreen = new SplashScreen();
 
-            splashScreen.Show();
+            //splashScreen.Show();
 
-            Dispatcher.Run();
+            //Dispatcher.Run();
         }
 
         private void HideScreen()
         {
-            if (splashScreen != null)
-            {
-                if (splashScreen.Dispatcher.CheckAccess())
-                    splashScreen.Close();
-                else
-                    splashScreen.Dispatcher.Invoke(DispatcherPriority.Normal,
-                        new ThreadStart(splashScreen.Close));
-            }
+            //if (splashScreen != null)
+            //{
+            //    if (splashScreen.Dispatcher.CheckAccess())
+            //        splashScreen.Close();
+            //    else
+            //        splashScreen.Dispatcher.Invoke(DispatcherPriority.Normal,
+            //            new ThreadStart(splashScreen.Close));
+            //}
         }
 
         private void BtnCalculate_OnClick(object sender, RoutedEventArgs e)
