@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using CalcEventDensity.Infrastructure;
 using CalcEventDensity.Models;
 using CalcEventDensity.Models.Service;
@@ -76,8 +69,8 @@ namespace CalcEventDensity
             {
                 window.Hide();
 
-                splashScreen = new SplashScreen();
-                splashScreen.Show();
+                //splashScreen = new SplashScreen();
+                //splashScreen.Show();
 
                 string pathToNewFile = String.Empty;
 
@@ -92,7 +85,7 @@ namespace CalcEventDensity
 
                     _calculationService.OnCalculationEnd += () =>
                     {
-                        splashScreen.Close();
+                        //splashScreen.Close();
                         window.Show();
                     };
 
