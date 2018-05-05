@@ -23,16 +23,16 @@ namespace CalcEventDensity.Services
         private List<IPoint> GridPoints => container.GridPoints;
 
         private CalculationParameters calcParams;
-
-        /// <summary>
-        /// Execution of calculation
-        /// </summary>
+        
         public CalculationService3D(CalculationParameters calcParams, PointContainer<IPoint> container)
         {
             this.calcParams = calcParams;
             this.container = container;
         }
 
+        /// <summary>
+        /// Execution of calculation
+        /// </summary>
         public void Calculate()
         {
             if (calcParams.IsGridPoints)

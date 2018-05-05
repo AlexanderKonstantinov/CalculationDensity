@@ -21,22 +21,18 @@ namespace CalcEventDensity
 {
     public class MainViewModel : ViewModelBase
     {
-        private ICalculationService calculationService;
+        private ICalculationService _calculationService;
 
         #region Binding fields
         public bool IsSelected3D { get; set; }
+
         public int pointRadius { get; set; }
-        public string ChoosedFile { get; set; } 
-        #endregion
+
+        public string ChoosedFile { get; set; }
+
         public bool IsGridPoints { get; set; }
-
-
-        private readonly MainWindow mainWindow;
-        public static string pathToNewFile = string.Empty;
-
+        #endregion
         
-
-
         private Dimension Dimension => IsSelected3D
                                         ? Dimension.D3
                                         : Dimension.D2;
@@ -44,7 +40,6 @@ namespace CalcEventDensity
         #region Constructors
         public MainViewModel()
         {
-            splashScreen = new SplashScreen();
             IsSelected3D = true;
             IsGridPoints = true;
             pointRadius = 5;
@@ -56,7 +51,6 @@ namespace CalcEventDensity
             if (ReadDataService.OpenFile(Dimension))
                 ChoosedFile = ReadDataService.PathToInitialFile.Name;
         });
-
         
 
         private RelayCommand calculateCommand;
@@ -82,59 +76,33 @@ namespace CalcEventDensity
             {
                 window.Hide();
 
-                //splashScreen = new SplashScreen();
-                //splashScreen.Show();
+                splashScreen = new SplashScreen();
+                splashScreen.Show();
 
+                string pathToNewFile = String.Empty;
 
-                if (Dimension == Dimension.D3)
+                if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
                 {
-                    if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
-                    {
-                        var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
-
-                        calculationService = new CalculationService3D(calcParams, container);
-
-                        calculationService.OnCalculationEnd += () =>
-                        {
-                            //splashScreen.Close();
-                            window.Show();
-                        };
-
-                        calculationService.Calculate();
-
-                        pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
-                    }
+                    var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
+                    
+                    if (Dimension == Dimension.D3)
+                        _calculationService = new CalculationService3D(calcParams, container);
                     else
-                        Calculation2D(ref pathToNewFile);
+                        _calculationService = new CalculationService2D(calcParams, container);
 
-                    if (File.Exists(pathToNewFile))
-                        Process.Start(pathToNewFile);
+                    _calculationService.OnCalculationEnd += () =>
+                    {
+                        splashScreen.Close();
+                        window.Show();
+                    };
+
+                    _calculationService.Calculate();
+
+                    pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
                 }
-
-                //MessageBox.Show($"{nameof(Dimension)}\t{Dimension.ToString()}\n" +
-                //                $"{nameof(IsSelected3D)}\t{IsSelected3D}\n" +
-                //                $"{nameof(pointRadius)}\t{pointRadius}");
-                //mainWindow.Calculate();
+                if (File.Exists(pathToNewFile))
+                    Process.Start(pathToNewFile);
             }
         }
-
-        void Calculation2D(ref string pathToNewFile)
-        {
-            //List<IPoint> events = new List<IPoint>();
-            //List<IPoint> gridPoints = new List<IPoint>();
-
-            //if (ReadDataService.ReadData(events, gridPoints, Dimension))
-            //{
-            //    var pointContainer = new PointContainer<Point2D>(
-            //        events.Cast<Point2D>().ToList(),
-            //        gridPoints.Cast<Point2D>().ToList());
-
-            //    var calculationService2D = new CalculationService2D(pointContainer, pointRadius, cbGridPoints.IsChecked == true);
-            //    calculationService2D.Calculate();
-
-            //    pathToNewFile = WriteDataService<Point2D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);
-            //}
-        }
-
     }
 }
