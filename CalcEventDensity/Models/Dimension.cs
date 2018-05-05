@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace CalcEventDensity.Models
 {
-    public enum Modes { D2, D3 }
+    public enum Dimension { D2, D3 }
 }

@@ -9,6 +9,8 @@ namespace CalcEventDensity.Services
 {
     public class CalculationService3D
     {
+        public event Action OnCalculationEnd;
+
         private List<Point3D> events;
         private List<Point3D> gridPoints;
         private bool isGridPoints;
@@ -35,6 +37,8 @@ namespace CalcEventDensity.Services
 
             CalcCubDensities();
             CalcGlobeDensities();
+
+            OnCalculationEnd?.Invoke();
         }
 
         /// <summary>

@@ -66,3 +66,35 @@ D:\Яндекс.Диск\Программирование\Работа\Calculati
 D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.csproj.CoreCompileInputs.cache
 D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.exe
 D:\Яндекс.Диск\Программирование\Работа\CalculationDensity v1.2 — копия\CalcEventDensity\obj\Release\CalcEventDensity.pdb
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.csprojResolveAssemblyReference.cache
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\SplashScreen.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\ContentControls.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Texts.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Theme.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\MainWindow.g.cs
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\SplashScreen.g.cs
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\App.g.cs
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.cache
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity_MarkupCompile.lref
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\App.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\MainWindow.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Buttons.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Colors.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Defaults.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Fonts.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\Icons.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\Styles\UserControl.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.g.resources
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.Properties.Resources.resources
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.csproj.GenerateResource.Cache
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.csproj.CoreCompileInputs.cache
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.exe
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\CalcEventDensity.pdb
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\CalcEventDensity.exe.config
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\CalcEventDensity.exe
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\CalcEventDensity.pdb
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\DevExpress.Mvvm.dll
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\DevExpress.Mvvm.UI.dll
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\PropertyChanged.dll
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\PropertyChanged.xml

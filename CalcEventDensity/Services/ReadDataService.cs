@@ -16,9 +16,9 @@ namespace CalcEventDensity.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="mode"></param>
+        /// <param name="dimension"></param>
         /// <returns>Был ли выбран файл и успешно считаны заголовки его столбцов</returns>
-        public static bool OpenFile(Modes mode)
+        public static bool OpenFile(Dimension dimension)
         {
             OpenFileDialog fd = new OpenFileDialog
             {
@@ -42,7 +42,7 @@ namespace CalcEventDensity.Services
                             if (!columnHeaders.Contains(columnHeader))
                                 throw new Exception("В файле должны быть следующие заголовки столбцов: \"X\", \"Y\", \"Energy\" ");
 
-                        if (mode == Modes.D3 && !isCoordinateZ)
+                        if (dimension == Dimension.D3 && !isCoordinateZ)
                             throw new Exception("Вы выбрали двумерный режим расчета, но файл не содержит столбца с заголовком \"Z\"");
                     }
 
@@ -57,7 +57,7 @@ namespace CalcEventDensity.Services
             return false;
         }
 
-        public static bool ReadData(List<IPoint> events, List<IPoint> gridPoints, Modes mode)
+        public static bool ReadData(List<IPoint> events, List<IPoint> gridPoints, Dimension dimension)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace CalcEventDensity.Services
                     {
                         IPoint point;
 
-                        if (mode == Modes.D2)
+                        if (dimension == Dimension.D2)
                         {
                             temp = isCoordinateZ
                                 ? GetDoubleArrayWithSkip(sr.ReadLine())

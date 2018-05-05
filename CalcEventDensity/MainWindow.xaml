@@ -4,12 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:helper="clr-namespace:CalcEventDensity.Helpers"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:CalcEventDensity"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d" 
+        x:Name="Window"
         Title="Плотность событий" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <helper:DoubleConverter x:Key="DoubleConverter"/>
     </Window.Resources>
-    <Grid x:Name="MainGrid" VerticalAlignment="Stretch">
+    <Grid
+          VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
@@ -19,9 +26,9 @@
             <Button  Margin="0, 20, 0, 5" Width="150" Height="30" 
                      Content="ВЫБРАТЬ ФАЙЛ" 
                      Style="{StaticResource BaseButton}"
-                     Click="btnChooseFile_Click"/>
-            <TextBlock x:Name="tbChoosedFile" TextWrapping="NoWrap" Margin="10 5"
-                       Text="{Binding Filename}" Style="{StaticResource BaseText}"
+                     Command="{Binding ChooseFileCommand}"/>
+            <TextBlock TextWrapping="NoWrap" Margin="10 5"
+                       Text="{Binding ChoosedFile}" Style="{StaticResource BaseText}"
                        TextAlignment="Center"/>
         </StackPanel>
         
@@ -29,12 +36,14 @@
                   Margin="5" Padding="10" VerticalAlignment="Top"
                   FontSize="{StaticResource Smal}">
             <ItemsControl BorderThickness="0" HorizontalContentAlignment="Stretch" >
-                <RadioButton x:Name="rb2D" GroupName="Dimensions" Content="2D" Margin="5"/>
-                <RadioButton GroupName="Dimensions" Content="3D" IsChecked="True" Margin="5"/>
-                <CheckBox x:Name="cbGridPoints" Content="Добавить точки сетки" IsChecked="True" Margin="5"/>
+                <RadioButton GroupName="Dimensions" Content="2D" Margin="5"/>
+                <RadioButton GroupName="Dimensions" Margin="5" Content="3D" 
+                             IsChecked="{Binding IsSelected3D}" />
+                <CheckBox Content="Добавить точки сетки" Margin="5"
+                          IsChecked="{Binding DoItGridPoints}"/>
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Slider x:Name="slGridStep" Delay="0"  HorizontalAlignment="Stretch" Width="130"
-                            Minimum="1" Maximum="50" Value="5" 
+                            Minimum="1" Maximum="50" Value="{Binding GridStep}" 
                             IsSelectionRangeEnabled="True" ToolTip="Задать шаг точек"/>
                     <TextBox x:Name="tbGridStep" Width="30" Margin="5 0"
                              Text="{Binding ElementName=slGridStep, Path=Value, Mode=TwoWay,
@@ -42,8 +51,9 @@
                 </StackPanel>
             </ItemsControl>
         </GroupBox>
-        <Button Grid.Row="2" Style="{StaticResource BaseButton}" VerticalAlignment="Center" VerticalContentAlignment="Center"
+        <Button x:Name="btnCalculate" Grid.Row="2" Style="{StaticResource BaseButton}" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                Click="BtnCalculate_OnClick"
                 Content="РАСЧЕТ" Width="120" Height="50" FontSize="{StaticResource Big}"
-                Command="{Binding CalculateCommand}"/>
+                Command="{Binding CalculateCommand}" CommandParameter="{Binding ElementName=Window}"/>
     </Grid>
 </Window>
