@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using CalcEventDensity.Infrastructure;
 using CalcEventDensity.Models;
+using CalcEventDensity.Models.Service;
 using CalcEventDensity.Services;
 using CalcEventDensity.Services.Base;
 using DevExpress.Mvvm;
@@ -24,10 +25,10 @@ namespace CalcEventDensity
 
         #region Binding fields
         public bool IsSelected3D { get; set; }
-        public int GridStep { get; set; }
+        public int pointRadius { get; set; }
         public string ChoosedFile { get; set; } 
         #endregion
-        public bool DoItAddGridPoints { get; set; }
+        public bool IsGridPoints { get; set; }
 
 
         private readonly MainWindow mainWindow;
@@ -45,8 +46,8 @@ namespace CalcEventDensity
         {
             splashScreen = new SplashScreen();
             IsSelected3D = true;
-            DoItAddGridPoints = true;
-            GridStep = 5;
+            IsGridPoints = true;
+            pointRadius = 5;
         }
         #endregion
 
@@ -73,50 +74,46 @@ namespace CalcEventDensity
         //       int.TryParse(mainWindow.tbGridStep.Text, out int n);
 
         private SplashScreen splashScreen;
-        private void BeginCalculate()
-        {
-            
-            splashScreen.Show();
-        }
 
         private void ExecuteCalculateCommand(object mainWindow)
         {
-            BeginCalculate();
             var window = mainWindow as Window;
             if (window != null)
             {
-                //SplashScreen splashScreen = new SplashScreen();
-                //splashScreen.Show();
-                //BeginCalculate();
                 window.Hide();
 
-                
+                //splashScreen = new SplashScreen();
+                //splashScreen.Show();
 
-                
+
                 if (Dimension == Dimension.D3)
                 {
                     if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
                     {
-                        calculationService = new CalculationService3D(GridStep, DoItAddGridPoints, container);
+                        var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
 
-                        //calculationService.OnCalculationEnd += () =>
-                        //{
-                        //    //splashScreen.Hide();
-                        //    window.Show();
-                        //};
+                        calculationService = new CalculationService3D(calcParams, container);
 
-                        calculationService.Calculate(ref pathToNewFile);
+                        calculationService.OnCalculationEnd += () =>
+                        {
+                            //splashScreen.Close();
+                            window.Show();
+                        };
 
-                        //pathToNewFile = WriteDataService<Point3D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);
+                        calculationService.Calculate();
+
+                        pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
                     }
                     else
                         Calculation2D(ref pathToNewFile);
-                    
+
+                    if (File.Exists(pathToNewFile))
+                        Process.Start(pathToNewFile);
                 }
 
                 //MessageBox.Show($"{nameof(Dimension)}\t{Dimension.ToString()}\n" +
                 //                $"{nameof(IsSelected3D)}\t{IsSelected3D}\n" +
-                //                $"{nameof(GridStep)}\t{GridStep}");
+                //                $"{nameof(pointRadius)}\t{pointRadius}");
                 //mainWindow.Calculate();
             }
         }
@@ -132,7 +129,7 @@ namespace CalcEventDensity
             //        events.Cast<Point2D>().ToList(),
             //        gridPoints.Cast<Point2D>().ToList());
 
-            //    var calculationService2D = new CalculationService2D(pointContainer, GridStep, cbGridPoints.IsChecked == true);
+            //    var calculationService2D = new CalculationService2D(pointContainer, pointRadius, cbGridPoints.IsChecked == true);
             //    calculationService2D.Calculate();
 
             //    pathToNewFile = WriteDataService<Point2D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);

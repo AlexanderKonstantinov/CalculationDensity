@@ -78,6 +78,7 @@
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Models\Dimension.cs" />
+    <Compile Include="Models\Service\CalcParams.cs" />
     <Compile Include="Services\Base\ICalculationService.cs" />
     <Compile Include="Services\CalculationService2D.cs" />
     <Compile Include="Services\CalculationService3D.cs" />
@@ -191,6 +192,7 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.3.0.3\build\Fody.targets" Condition="Exists('..\packages\Fody.3.0.3\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

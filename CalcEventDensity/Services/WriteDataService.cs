@@ -4,12 +4,12 @@ using CalcEventDensity.Models;
 
 namespace CalcEventDensity.Services
 {
-    public static class WriteDataService<T> where T : IPoint
+    public static class WriteDataService
     {
         private static string dimension;
         private static string columnHeaders;
 
-        public static string WriteFile(FileInfo file, PointContainer<T> container)
+        public static string WriteFile(FileInfo file, PointContainer<IPoint> container)
         {
             if (container.Events.First() is Point2D)
             {

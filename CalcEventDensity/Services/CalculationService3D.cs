@@ -1,117 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using CalcEventDensity.Models;
+using CalcEventDensity.Models.Service;
 using CalcEventDensity.Services.Base;
-using static CalcEventDensity.PointContainer<CalcEventDensity.Models.Point3D>;
 
 namespace CalcEventDensity.Services
 {
     public class CalculationService3D : ICalculationService
     {
+        /// <summary>
+        /// Occurs when to end calculation
+        /// </summary>
         public event Action OnCalculationEnd;
 
+        /// <summary>
+        /// Container included events and grid points,
+        ///  as well as boundary points of map
+        /// </summary>
         private readonly PointContainer<IPoint> container;
 
-        private List<IPoint> Events
-        {
-            get => container.Events;
-            set => container.Events = value;
-        }
-        private List<IPoint> GridPoints
-        {
-            get => container.GridPoints;
-            set => container.GridPoints = value;
-        }
+        private List<IPoint> Events => container.Events;
+        private List<IPoint> GridPoints => container.GridPoints;
 
-        private bool isGridPoints;
+        private CalculationParameters calcParams;
+
         /// <summary>
-        /// Шаг сетки. Если 0, то точки сетки не добавляются и не рассчитываются
+        /// Execution of calculation
         /// </summary>
-        private readonly int gridStep;
-
-        public CalculationService3D(int gridStep, bool isGridPoints, PointContainer<IPoint> container)
+        public CalculationService3D(CalculationParameters calcParams, PointContainer<IPoint> container)
         {
-            this.isGridPoints = isGridPoints;
-            this.gridStep = gridStep;
-
+            this.calcParams = calcParams;
             this.container = container;
         }
 
-        public void Calculate(ref string pathToNewFile)
+        public void Calculate()
         {
-            if (isGridPoints)
-            {
-                DesicionBoundaryPoints();
+            if (calcParams.IsGridPoints)
                 AddGridPoints();
-            }
 
             CalcCubDensities();
             CalcGlobeDensities();
 
             OnCalculationEnd?.Invoke();
         }
-
-        /// <summary>
-        /// Определение граничных точек
-        /// </summary>
-        private void DesicionBoundaryPoints()
-        {
-            MinX = MaxX = Events.First().X;
-            MinY = MaxY = Events.First().Y;
-            MinZ = MaxZ = Events.First().Z;
-
-            FindBoundaryPoints(Events);
-            FindBoundaryPoints(GridPoints);
-        }
-
-        private void FindBoundaryPoints(IEnumerable<IPoint> points)
-        {
-            foreach (var point in points)
-            {
-                if (point.X < MinX) MinX = point.X;
-                if (point.X > MaxX) MaxX = point.X;
-                if (point.Y < MinY) MinY = point.Y;
-                if (point.Y > MaxY) MaxY = point.Y;
-                if (point.Z < MinZ) MinZ = point.Z;
-                if (point.Z > MaxZ) MaxZ = point.Z;
-            }
-        }
-
-        /// <summary>
-        /// Добавление точек сетки, где энергия события равна 0 
-        /// (сделал так, чтобы не создавать новый тип)
-        /// </summary>
+        
         private void AddGridPoints()
         {
-            for (double x = MinX; x < MaxX; x += gridStep)
+            calcParams.DesicionBoundaryPoints(Events);
+
+            for (double x = calcParams.MinX; x < calcParams.MaxX; x += calcParams.PointRadius)
             {
-                for (double y = MinY; y < MaxY; y += gridStep)
+                for (double y = calcParams.MinY; y < calcParams.MaxY; y += calcParams.PointRadius)
                 {
-                    for (double z = MinZ; z < MaxZ; z += gridStep)
+                    for (double z = calcParams.MinZ; z < calcParams.MaxZ; z += calcParams.PointRadius)
                         GridPoints.Add(new Point3D(x, y, z, 0));
                 }
             }
-
-            GridPoints = GridPoints.Distinct().ToList();
         }
         
-        /// <summary>
-        /// Расчет плотности событий в объеме кубов размерами 5x5
-        /// </summary>
         private void CalcCubDensities()
         {
+            // vertices of the cube
             double minX, maxX, minY, maxY, minZ, maxZ;
             
             for (int i = 0; i < Events.Count; i++)
             {
                 // Формируем куб для конкретной точки
-                minX = Events[i].X - gridStep;
-                maxX = Events[i].X + gridStep;
-                minY = Events[i].Y - gridStep;
-                maxY = Events[i].Y + gridStep;
-                minZ = Events[i].Z - gridStep;
-                maxZ = Events[i].Z + gridStep;
+                minX = Events[i].X - calcParams.PointRadius;
+                maxX = Events[i].X + calcParams.PointRadius;
+                minY = Events[i].Y - calcParams.PointRadius;
+                maxY = Events[i].Y + calcParams.PointRadius;
+                minZ = Events[i].Z - calcParams.PointRadius;
+                maxZ = Events[i].Z + calcParams.PointRadius;
 
                 // Считаем количество событий, произошедших в границах конкретного куба
                 // и суммируем их энергию
@@ -152,7 +112,7 @@ namespace CalcEventDensity.Services
                 {
                     if (Math.Pow(Events[i].X - Events[j].X, 2)
                         + Math.Pow(Events[i].Y - Events[j].Y, 2)
-                        + Math.Pow(Events[i].Z - Events[j].Z, 2) <= gridStep * gridStep) //квадрат радиуса сферы
+                        + Math.Pow(Events[i].Z - Events[j].Z, 2) <= calcParams.PointRadius * calcParams.PointRadius) //квадрат радиуса сферы
                     {
                         ++Events[i].DensityCirc;
                         Events[i].EnergySumCirc += Events[j].Energy;
@@ -166,7 +126,7 @@ namespace CalcEventDensity.Services
                 {
                     if (Math.Pow(GridPoints[k].X - Events[i].X, 2)
                         + Math.Pow(GridPoints[k].Y - Events[i].Y, 2)
-                        + Math.Pow(GridPoints[k].Z - Events[i].Z, 2) <= gridStep * gridStep) //квадрат радиуса сферы
+                        + Math.Pow(GridPoints[k].Z - Events[i].Z, 2) <= calcParams.PointRadius * calcParams.PointRadius) //квадрат радиуса сферы
                     {
                         ++GridPoints[k].DensityCirc;
                         GridPoints[k].EnergySumCirc += Events[i].Energy;

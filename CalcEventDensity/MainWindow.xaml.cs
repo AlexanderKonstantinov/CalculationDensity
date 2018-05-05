@@ -51,7 +51,7 @@ namespace CalcEventDensity
 
 
             //if (Dimension == Dimension.D2)
-            //    Calculation2D(ref pathToNewFile);
+            //    CalculationService2D(ref pathToNewFile);
             //else if (Dimension == Dimension.D3)
             //    Calculation3D(ref pathToNewFile);
             
@@ -76,7 +76,7 @@ namespace CalcEventDensity
             //        events.Cast<Point2D>().ToList(),
             //        gridPoints.Cast<Point2D>().ToList());
 
-            //    var calculationService2D = new CalculationService2D(pointContainer, GridStep, cbGridPoints.IsChecked == true);
+            //    var calculationService2D = new CalculationService2D(pointContainer, pointRadius, cbGridPoints.IsChecked == true);
             //    calculationService2D.Calculate();
 
             //    pathToNewFile = WriteDataService<Point2D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);
@@ -94,7 +94,7 @@ namespace CalcEventDensity
             //        events.Cast<Point3D>().ToList(),
             //        gridPoints.Cast<Point3D>().ToList());
 
-            //    var calculationService3D = new CalculationService3D(pointContainer, GridStep, cbGridPoints.IsChecked == true);
+            //    var calculationService3D = new CalculationService3D(pointContainer, pointRadius, cbGridPoints.IsChecked == true);
             //    calculationService3D.Calculate();
 
             //    pathToNewFile = WriteDataService<Point3D>.WriteFile(ReadDataService.PathToInitialFile, pointContainer);
