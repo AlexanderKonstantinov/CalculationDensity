@@ -1,4 +1,4 @@
-﻿<Window x:Class="CalcEventDensity.MainWindow"
+﻿<Window x:Class="CalcEventDensity.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,11 +6,12 @@
         xmlns:helper="clr-namespace:CalcEventDensity.Helpers"
         xmlns:local="clr-namespace:CalcEventDensity"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewModels="clr-namespace:CalcEventDensity.ViewModels"
         mc:Ignorable="d" 
         x:Name="Window"
         Title="Плотность событий" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.DataContext>
-        <local:MainViewModel/>
+        <viewModels:MainViewModel/>
     </Window.DataContext>
     <Window.Resources>
         <helper:DoubleConverter x:Key="DoubleConverter"/>

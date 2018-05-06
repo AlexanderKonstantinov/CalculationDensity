@@ -33,17 +33,13 @@ D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\DevExpress.Mv
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\DevExpress.Mvvm.UI.dll
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\PropertyChanged.dll
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\PropertyChanged.xml
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\SplashScreen.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\ContentControls.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\Texts.baml
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\MainWindow.g.cs
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\SplashScreen.g.cs
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\App.g.cs
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\CalcEventDensity_MarkupCompile.cache
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\CalcEventDensity_MarkupCompile.lref
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\App.baml
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\MainWindow.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\Buttons.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\Colors.baml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Styles\Defaults.baml
@@ -61,3 +57,7 @@ D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\System.Window
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\Microsoft.Expression.Interactions.xml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Debug\System.Windows.Interactivity.xml
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\CalcEventDensity.csprojResolveAssemblyReference.cache
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Views\MainWindow.g.cs
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Views\MainWindow.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Views\CalculationScreen.baml
+D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Debug\Views\CalculationScreen.g.cs

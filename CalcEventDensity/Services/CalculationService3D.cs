@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using CalcEventDensity.Models;
 using CalcEventDensity.Models.Service;
 using CalcEventDensity.Services.Base;
@@ -8,6 +9,8 @@ namespace CalcEventDensity.Services
 {
     public class CalculationService3D : ICalculationService
     {
+        public event Action OnCalculationStart;
+
         /// <summary>
         /// Occurs when to end calculation
         /// </summary>
@@ -35,9 +38,19 @@ namespace CalcEventDensity.Services
         /// </summary>
         public void Calculate()
         {
+            OnCalculationStart?.Invoke();
+
             if (calcParams.IsGridPoints)
+            {
+                calcParams.DesicionBoundaryPoints(Events);
+                
+                container.GridPoints = new List<IPoint>();
                 AddGridPoints();
 
+                container.GridPoints.Capacity = container.GridPoints.Count;
+            }
+                
+            
             CalcCubDensities();
             CalcGlobeDensities();
 
@@ -46,8 +59,6 @@ namespace CalcEventDensity.Services
         
         private void AddGridPoints()
         {
-            calcParams.DesicionBoundaryPoints(Events);
-
             for (double x = calcParams.MinX; x < calcParams.MaxX; x += calcParams.PointRadius)
             {
                 for (double y = calcParams.MinY; y < calcParams.MaxY; y += calcParams.PointRadius)

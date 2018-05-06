@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 using CalcEventDensity.Infrastructure;
 using CalcEventDensity.Models;
 using CalcEventDensity.Models.Service;
 using CalcEventDensity.Services;
 using CalcEventDensity.Services.Base;
+using CalcEventDensity.Views;
 using DevExpress.Mvvm;
 
-namespace CalcEventDensity
+namespace CalcEventDensity.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
@@ -43,8 +46,11 @@ namespace CalcEventDensity
         {
             if (ReadDataService.OpenFile(Dimension))
                 ChoosedFile = ReadDataService.PathToInitialFile.Name;
+
+            
         });
-        
+
+        private CalculationScreen CalculationScreen;
 
         private RelayCommand calculateCommand;
 
@@ -59,23 +65,25 @@ namespace CalcEventDensity
         //private bool CanExecuteCalculateCommand(object o)
         //    => File.Exists(ReadDataService.PathToInitialFile?.FullName) &&
         //       int.TryParse(mainWindow.tbGridStep.Text, out int n);
-
-        private SplashScreen splashScreen;
-
+        
         private void ExecuteCalculateCommand(object mainWindow)
         {
             var window = mainWindow as Window;
             if (window != null)
             {
-                window.Hide();
+                //window.Hide();
 
-                //splashScreen = new SplashScreen();
-                //splashScreen.Show();
+                //Dispatcher.Run();
 
+                //var calculationScreen = new CalculationScreen();
+
+                
                 string pathToNewFile = String.Empty;
 
                 if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
                 {
+                    calculationScreen = new CalculationScreen();
+
                     var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
                     
                     if (Dimension == Dimension.D3)
@@ -83,18 +91,64 @@ namespace CalcEventDensity
                     else
                         _calculationService = new CalculationService2D(calcParams, container);
 
+                    window.Hide();
+                    calculationScreen = new CalculationScreen();
+                    //calculationScreen.Show();
+
+                    
+
+                    Thread thread = new Thread(calculationScreen.Show);
+                    thread.SetApartmentState(ApartmentState.STA);
+                    thread.IsBackground = true;
+                    thread.Start();
+
+                    System.Windows.Threading.Dispatcher.Run();
+
                     _calculationService.OnCalculationEnd += () =>
                     {
-                        //splashScreen.Close();
-                        window.Show();
+                        if (thread.IsAlive)
+                        {
+                            
+                            HideScreen();
+
+                            window.Show();
+
+                            pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
+
+                            if (File.Exists(pathToNewFile))
+                                Process.Start(pathToNewFile);
+                        }
                     };
 
+                    //_calculationService.OnCalculationEnd += () =>
+                    //{
+                    //    calculationScreen.Close();
+
+                    //    window.Show();
+
+                    //    pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
+
+                    //    if (File.Exists(pathToNewFile))
+                    //        Process.Start(pathToNewFile);
+
+                    //};
                     _calculationService.Calculate();
 
-                    pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
                 }
-                if (File.Exists(pathToNewFile))
-                    Process.Start(pathToNewFile);
+                
+            }
+        }
+
+        private CalculationScreen calculationScreen;
+        private void HideScreen()
+        {
+            if (calculationScreen != null)
+            {
+                if (calculationScreen.Dispatcher.CheckAccess())
+                    calculationScreen.Close();
+                else
+                    calculationScreen.Dispatcher.Invoke(DispatcherPriority.Normal,
+                        new ThreadStart(calculationScreen.Close));
             }
         }
     }

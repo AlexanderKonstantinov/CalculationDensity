@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Git\Work Projects\CalculationDensity\CalcEventDensity\App.xaml
-10-95708124
+101702145118
 
-21635755038
+22-1047524790
 18-619572725
-MainWindow.xaml;SplashScreen.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\ContentControls.xaml;Styles\Defaults.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\Texts.xaml;Styles\UserControl.xaml;
+Views\MainWindow.xaml;Views\CalculationScreen.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\ContentControls.xaml;Styles\Defaults.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\Texts.xaml;Styles\UserControl.xaml;
 
 False
 

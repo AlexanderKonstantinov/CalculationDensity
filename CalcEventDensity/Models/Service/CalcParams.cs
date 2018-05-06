@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CalcEventDensity.Models.Service
@@ -23,8 +24,8 @@ namespace CalcEventDensity.Models.Service
         /// <summary>
         /// Whether it is necessary to calculate additional grid points 
         /// </summary>
-        public readonly bool IsGridPoints;
-
+        public bool IsGridPoints { get; }
+        
         public CalculationParameters(int pointRadius, bool isGridPoints)
         {
             this.PointRadius = pointRadius;

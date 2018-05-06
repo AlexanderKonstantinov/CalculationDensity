@@ -8,6 +8,7 @@ namespace CalcEventDensity.Services.Base
 {
     interface ICalculationService
     {
+        event Action OnCalculationStart;
         event Action OnCalculationEnd;
 
         void Calculate();

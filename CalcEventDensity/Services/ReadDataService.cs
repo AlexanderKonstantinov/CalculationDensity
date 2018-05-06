@@ -17,7 +17,7 @@ namespace CalcEventDensity.Services
         /// 
         /// </summary>
         /// <param name="dimension"></param>
-        /// <returns>Был ли выбран файл и успешно считаны заголовки его столбцов</returns>
+        /// <returns>Был ли выбран файл и успешно ли считаны заголовки его столбцов</returns>
         public static bool OpenFile(Dimension dimension)
         {
             OpenFileDialog fd = new OpenFileDialog
@@ -62,7 +62,6 @@ namespace CalcEventDensity.Services
             container = new PointContainer<IPoint>
             {
                 Events = new List<IPoint>(),
-                GridPoints = new List<IPoint>()
             };
             
             try
@@ -94,6 +93,7 @@ namespace CalcEventDensity.Services
                             container.Events.Add(point);
                     }
                 }
+                container.Events.Capacity = container.Events.Count;
                 return true;
             }
             catch (Exception)

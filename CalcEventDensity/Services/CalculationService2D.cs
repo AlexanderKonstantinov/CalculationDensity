@@ -8,10 +8,13 @@ namespace CalcEventDensity.Services
 {
     public class CalculationService2D : ICalculationService
     {
+        public event Action OnCalculationStart;
+
         /// <summary>
         /// Occurs when to end calculation
         /// </summary>
         public event Action OnCalculationEnd;
+        
 
         /// <summary>
         /// Container included events and grid points,
