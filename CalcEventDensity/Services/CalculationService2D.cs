@@ -8,14 +8,6 @@ namespace CalcEventDensity.Services
 {
     public class CalculationService2D : ICalculationService
     {
-        public event Action OnCalculationStart;
-
-        /// <summary>
-        /// Occurs when to end calculation
-        /// </summary>
-        public event Action OnCalculationEnd;
-        
-
         /// <summary>
         /// Container included events and grid points,
         ///  as well as boundary points of map
@@ -39,18 +31,21 @@ namespace CalcEventDensity.Services
         public void Calculate()
         {
             if (calcParams.IsGridPoints)
+            {
+                calcParams.DesicionBoundaryPoints(Events);
+
+                container.GridPoints = new List<IPoint>();
                 AddGridPoints();
+
+                container.GridPoints.Capacity = container.GridPoints.Count;
+            }
 
             CalcRectDensities();
             CalcCircDensities();
-
-            OnCalculationEnd?.Invoke();
         }
 
         private void AddGridPoints()
         {
-            calcParams.DesicionBoundaryPoints(Events);
-
             for (double x = calcParams.MinX; x <= calcParams.MaxX; x += 5)
             {
                 for (double y = calcParams.MinY; y <= calcParams.MaxY; y += 5)

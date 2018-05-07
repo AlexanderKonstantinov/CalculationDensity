@@ -85,9 +85,13 @@
     <Compile Include="Services\ReadDataService.cs" />
     <Compile Include="Services\WriteDataService.cs" />
     <Compile Include="ViewModels\CalculationScreenViewModel.cs" />
-    <Compile Include="Views\CalculationScreen.xaml.cs">
-      <DependentUpon>CalculationScreen.xaml</DependentUpon>
+    <Compile Include="Views\PageScreen.xaml.cs">
+      <DependentUpon>PageScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,11 +101,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\DoubleConverter.cs" />
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\CalculationScreen.xaml">
+    <Page Include="Views\PageScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

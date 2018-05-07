@@ -17,6 +17,9 @@ namespace CalcEventDensity.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        public static event Action OnCalculationBegin;
+        public static event Action OnCalculationEnd;
+
         private ICalculationService _calculationService;
 
         #region Binding fields
@@ -46,11 +49,7 @@ namespace CalcEventDensity.ViewModels
         {
             if (ReadDataService.OpenFile(Dimension))
                 ChoosedFile = ReadDataService.PathToInitialFile.Name;
-
-            
         });
-
-        private CalculationScreen CalculationScreen;
 
         private RelayCommand calculateCommand;
 
@@ -62,93 +61,35 @@ namespace CalcEventDensity.ViewModels
             
             return true;
         }
+
         //private bool CanExecuteCalculateCommand(object o)
         //    => File.Exists(ReadDataService.PathToInitialFile?.FullName) &&
         //       int.TryParse(mainWindow.tbGridStep.Text, out int n);
         
-        private void ExecuteCalculateCommand(object mainWindow)
+        private void ExecuteCalculateCommand(object o)
         {
-            var window = mainWindow as Window;
-            if (window != null)
+            string pathToNewFile = String.Empty;
+
+            if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
             {
-                //window.Hide();
+                OnCalculationBegin?.Invoke();
 
-                //Dispatcher.Run();
-
-                //var calculationScreen = new CalculationScreen();
-
-                
-                string pathToNewFile = String.Empty;
-
-                if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
-                {
-                    calculationScreen = new CalculationScreen();
-
-                    var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
+                var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
                     
-                    if (Dimension == Dimension.D3)
-                        _calculationService = new CalculationService3D(calcParams, container);
-                    else
-                        _calculationService = new CalculationService2D(calcParams, container);
-
-                    window.Hide();
-                    calculationScreen = new CalculationScreen();
-                    //calculationScreen.Show();
-
-                    
-
-                    Thread thread = new Thread(calculationScreen.Show);
-                    thread.SetApartmentState(ApartmentState.STA);
-                    thread.IsBackground = true;
-                    thread.Start();
-
-                    System.Windows.Threading.Dispatcher.Run();
-
-                    _calculationService.OnCalculationEnd += () =>
-                    {
-                        if (thread.IsAlive)
-                        {
-                            
-                            HideScreen();
-
-                            window.Show();
-
-                            pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
-
-                            if (File.Exists(pathToNewFile))
-                                Process.Start(pathToNewFile);
-                        }
-                    };
-
-                    //_calculationService.OnCalculationEnd += () =>
-                    //{
-                    //    calculationScreen.Close();
-
-                    //    window.Show();
-
-                    //    pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
-
-                    //    if (File.Exists(pathToNewFile))
-                    //        Process.Start(pathToNewFile);
-
-                    //};
-                    _calculationService.Calculate();
-
-                }
-                
-            }
-        }
-
-        private CalculationScreen calculationScreen;
-        private void HideScreen()
-        {
-            if (calculationScreen != null)
-            {
-                if (calculationScreen.Dispatcher.CheckAccess())
-                    calculationScreen.Close();
+                if (Dimension == Dimension.D3)
+                    _calculationService = new CalculationService3D(calcParams, container);
                 else
-                    calculationScreen.Dispatcher.Invoke(DispatcherPriority.Normal,
-                        new ThreadStart(calculationScreen.Close));
+                    _calculationService = new CalculationService2D(calcParams, container);
+
+                _calculationService.Calculate();
+                
+                pathToNewFile = WriteDataService.WriteFile(ReadDataService.PathToInitialFile, container);
+
+                OnCalculationEnd?.Invoke();
+
+                if (File.Exists(pathToNewFile))
+                    Process.Start(pathToNewFile);
+
             }
         }
     }
