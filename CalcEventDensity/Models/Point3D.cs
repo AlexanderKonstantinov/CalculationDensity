@@ -1,7 +1,7 @@
 ﻿
 namespace CalcEventDensity.Models
 {
-    public class Point3D : IPoint
+    public struct Point3D : IPoint
     {
         public double X { get; }
         public double Y { get; }

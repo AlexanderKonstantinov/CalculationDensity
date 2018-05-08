@@ -70,6 +70,8 @@ namespace CalcEventDensity.ViewModels
         {
             string pathToNewFile = String.Empty;
 
+            Stopwatch timer = Stopwatch.StartNew();
+
             if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
             {
                 OnCalculationBegin?.Invoke();
@@ -90,6 +92,7 @@ namespace CalcEventDensity.ViewModels
                 if (File.Exists(pathToNewFile))
                     Process.Start(pathToNewFile);
 
+                MessageBox.Show(timer.Elapsed.ToString());
             }
         }
     }
