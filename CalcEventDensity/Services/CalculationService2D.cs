@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CalcEventDensity.Services.Base;
 using CalcEventDensity.Models;
 using CalcEventDensity.Models.Service;
@@ -46,9 +47,9 @@ namespace CalcEventDensity.Services
 
         private void AddGridPoints()
         {
-            for (double x = calcParams.MinX; x <= calcParams.MaxX; x += 5)
+            for (double x = calcParams.MinX; x <= calcParams.MaxX; x += calcParams.PointRadius)
             {
-                for (double y = calcParams.MinY; y <= calcParams.MaxY; y += 5)
+                for (double y = calcParams.MinY; y <= calcParams.MaxY; y += calcParams.PointRadius)
                     GridPoints.Add(new Point2D(x, y, 0));
             }
         }

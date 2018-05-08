@@ -44,7 +44,7 @@
                     <Slider x:Name="slGridStep" Delay="0"  HorizontalAlignment="Stretch" Width="130"
                             Minimum="1" Maximum="50" Value="{Binding pointRadius}" 
                             IsSelectionRangeEnabled="True" ToolTip="Задать шаг точек"/>
-                    <TextBox  Width="30" Margin="5 0"
+                    <TextBox x:Name="tbGridStep" Width="30" Margin="5 0"
                              Text="{Binding ElementName=slGridStep, Path=Value, Mode=TwoWay,
                                 Converter={StaticResource DoubleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
@@ -53,6 +53,7 @@
         <Button Grid.Row="2" Style="{StaticResource BaseButton}" 
                 VerticalAlignment="Center" VerticalContentAlignment="Center"
                 Content="РАСЧЕТ" Width="120" Height="50" FontSize="{StaticResource Big}"
-                Command="{Binding CalculateCommand}" CommandParameter="{Binding ElementName=Window}"/>
+                Command="{Binding CalculateCommand}"
+                CommandParameter="{Binding ElementName=tbGridStep, Path=Text}"/>
     </Grid>
 </Page>

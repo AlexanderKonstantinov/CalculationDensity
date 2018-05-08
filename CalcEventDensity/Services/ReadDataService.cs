@@ -11,7 +11,7 @@ namespace CalcEventDensity.Services
     public static class ReadDataService
     {
         private static bool isCoordinateZ;
-        public static FileInfo PathToInitialFile = new FileInfo(@"D:\Git\Work\CalculationDensity\Пример\Example.csv");
+        public static FileInfo PathToInitialFile;
 
         /// <summary>
         /// 

@@ -55,17 +55,11 @@ namespace CalcEventDensity.ViewModels
 
         public ICommand CalculateCommand => calculateCommand
             ?? (calculateCommand = new RelayCommand(ExecuteCalculateCommand, CanExecuteCalculateCommand));
-
-        private bool CanExecuteCalculateCommand(object o)
-        {
-            
-            return true;
-        }
-
-        //private bool CanExecuteCalculateCommand(object o)
-        //    => File.Exists(ReadDataService.PathToInitialFile?.FullName) &&
-        //       int.TryParse(mainWindow.tbGridStep.Text, out int n);
         
+        private bool CanExecuteCalculateCommand(object gridStep)
+            => File.Exists(ReadDataService.PathToInitialFile?.FullName) &&
+               int.TryParse(gridStep.ToString(), out int n);
+
         private void ExecuteCalculateCommand(object o)
         {
             string pathToNewFile = String.Empty;

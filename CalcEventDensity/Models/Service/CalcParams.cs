@@ -7,12 +7,12 @@ namespace CalcEventDensity.Models.Service
     public class CalculationParameters
     {
         #region Boundary points of map
-        public double MinX { get; set; }
-        public double MaxX { get; set; }
-        public double MinY { get; set; }
-        public double MaxY { get; set; }
-        public double MinZ { get; set; }
-        public double MaxZ { get; set; } 
+        public int MinX { get; set; }
+        public int MaxX { get; set; }
+        public int MinY { get; set; }
+        public int MaxY { get; set; }
+        public int MinZ { get; set; }
+        public int MaxZ { get; set; } 
         #endregion
 
         /// <summary>
@@ -37,20 +37,30 @@ namespace CalcEventDensity.Models.Service
         /// </summary>
         public void DesicionBoundaryPoints(IEnumerable<IPoint> events)
         {
-            MinX = MaxX = events.First().X;
-            MinY = MaxY = events.First().Y;
-            MinZ = MaxZ = events.First().Z;
+            double MinXd = events.First().X,
+                   MaxXd = events.First().X,
+                   MinYd = events.First().Y,
+                   MaxYd = events.First().Y,
+                   MinZd = events.First().Z,
+                   MaxZd = events.First().Z;
 
             foreach (var point in events)
             {
-                if (point.X < MinX) MinX = point.X;
-                if (point.X > MaxX) MaxX = point.X;
-                if (point.Y < MinY) MinY = point.Y;
-                if (point.Y > MaxY) MaxY = point.Y;
+                if (point.X < MinXd) MinXd = point.X;
+                if (point.X > MaxXd) MaxXd = point.X;
+                if (point.Y < MinYd) MinYd = point.Y;
+                if (point.Y > MaxYd) MaxYd = point.Y;
 
-                if (point.Z < MinZ) MinZ = point.Z;
-                if (point.Z > MaxZ) MaxZ = point.Z;
+                if (point.Z < MinZd) MinZd = point.Z;
+                if (point.Z > MaxZd) MaxZd = point.Z;
             }
+
+            MinX = (int) MinXd;
+            MaxX = (int) MaxXd;
+            MinY = (int) MinYd;
+            MaxY = (int) MaxYd;
+            MinZ = (int) MinZd;
+            MaxZ = (int) MaxZd;
         }
     }
 }
