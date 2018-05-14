@@ -39,12 +39,6 @@
     <ApplicationIcon>MainIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Mvvm, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
-      <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Mvvm.UI, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
-      <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -76,6 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\ConverterBoolFromString.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
+    <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Models\Dimension.cs" />
     <Compile Include="Models\Service\CalcParams.cs" />
@@ -177,10 +172,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\MainIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Dots.jpg" />
+    <Resource Include="Resources\MainIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\EmptyCircles.png">

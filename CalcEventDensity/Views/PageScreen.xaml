@@ -7,9 +7,9 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:viewModels="clr-namespace:CalcEventDensity.ViewModels"
         Height="400" Width="550">
-    <Page.Background>
+    <!--<Page.Background>
         <ImageBrush ImageSource="../Resources/Dots.jpg"/>
-    </Page.Background>
+    </Page.Background>-->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction

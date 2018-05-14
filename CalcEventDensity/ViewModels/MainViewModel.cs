@@ -10,13 +10,15 @@ using CalcEventDensity.Models;
 using CalcEventDensity.Models.Service;
 using CalcEventDensity.Services;
 using CalcEventDensity.Services.Base;
+using CalcEventDensity.ViewModels.Base;
 using CalcEventDensity.Views;
-using DevExpress.Mvvm;
 
 namespace CalcEventDensity.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private PointContainer<IPoint> container;
+
         public static event Action OnCalculationBegin;
         public static event Action OnCalculationEnd;
 
@@ -45,7 +47,7 @@ namespace CalcEventDensity.ViewModels
         }
         #endregion
 
-        public ICommand ChooseFileCommand => new DelegateCommand(() =>
+        public ICommand ChooseFileCommand => new RelayCommand(o =>
         {
             if (ReadDataService.OpenFile(Dimension))
                 ChoosedFile = ReadDataService.PathToInitialFile.Name;
@@ -64,10 +66,10 @@ namespace CalcEventDensity.ViewModels
         {
             string pathToNewFile = String.Empty;
 
-            Stopwatch timer = Stopwatch.StartNew();
-
             if (ReadDataService.ReadData(Dimension, out PointContainer<IPoint> container))
             {
+                this.container = container;
+
                 OnCalculationBegin?.Invoke();
 
                 var calcParams = new CalculationParameters(pointRadius, IsGridPoints);
@@ -85,9 +87,12 @@ namespace CalcEventDensity.ViewModels
 
                 if (File.Exists(pathToNewFile))
                     Process.Start(pathToNewFile);
-
-                MessageBox.Show(timer.Elapsed.ToString());
             }
+        }
+
+        protected override void OnDispose()
+        {
+            container?.Clear();
         }
     }
 }

@@ -9,5 +9,11 @@ namespace CalcEventDensity
         public List<T> GridPoints { get; set; }
         
         public PointContainer() { }
+
+        internal void Clear()
+        {
+            Events.Clear();
+            GridPoints.Clear();
+        }
     }
 }

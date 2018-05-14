@@ -101,8 +101,6 @@ D:\Git\Work Projects\CalculationDensity\CalcEventDensity\bin\Release\PropertyCha
 D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\CalcEventDensity.exe.config
 D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\CalcEventDensity.exe
 D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\CalcEventDensity.pdb
-D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\DevExpress.Mvvm.dll
-D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\DevExpress.Mvvm.UI.dll
 D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\Microsoft.Expression.Interactions.dll
 D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\PropertyChanged.dll
 D:\Git\Work\CalculationDensity\CalcEventDensity\bin\Release\System.Windows.Interactivity.dll

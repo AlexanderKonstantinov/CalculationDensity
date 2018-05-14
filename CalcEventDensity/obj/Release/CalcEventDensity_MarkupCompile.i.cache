@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\obj\Release\
+D:\Git\Work\CalculationDensity\CalcEventDensity\obj\Release\
 CalcEventDensity
 none
 false
 TRACE
-D:\Git\Work Projects\CalculationDensity\CalcEventDensity\App.xaml
-11-1786218258
+D:\Git\Work\CalculationDensity\CalcEventDensity\App.xaml
+111716854834
 
-231834863091
-161637074522
-MainWindow.xaml;SplashScreen.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\ContentControls.xaml;Styles\Defaults.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\Texts.xaml;Styles\Theme.xaml;Styles\UserControl.xaml;
+28545376310
+16-962605847
+Views\MainPage.xaml;Views\MainWindow.xaml;Views\PageScreen.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\ContentControls.xaml;Styles\Defaults.xaml;Styles\Fonts.xaml;Styles\Icons.xaml;Styles\Texts.xaml;Styles\UserControl.xaml;
 
-False
+True
 
